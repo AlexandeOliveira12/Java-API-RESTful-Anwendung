@@ -28,4 +28,8 @@ public class ProdutoService {
 
         return produto;
     }
+
+    public String deletar(Long id) {
+        return produtoRepository.deletar(id);
+    }
 }

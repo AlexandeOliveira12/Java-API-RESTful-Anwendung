@@ -30,4 +30,9 @@ public class ProdutoController {
     public Produto adicionar(@RequestBody Produto produto) {
         return produtoService.adicionar(produto);
     }
+
+    @DeleteMapping("/{id}")
+    public String deletar(@PathVariable Long id) {
+        return produtoService.deletar(id);
+    }
 }

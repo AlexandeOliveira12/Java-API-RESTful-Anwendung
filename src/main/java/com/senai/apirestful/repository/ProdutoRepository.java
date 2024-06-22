@@ -33,4 +33,15 @@ public class ProdutoRepository {
         return produto;
     }
 
+    public String deletar(Long id ) {
+        Optional<Produto> prod = obterPorId(id);
+        if (prod.isEmpty()) {
+            return "Produto com id:" + id + " Não foi possivel a sua exclusão!";
+        }
+        else {
+            produtos.removeIf(produto -> produto.getId() == id);
+            return "Produto com id: " + id + " Excluido com sucesso!";
+        }
+    }
+
 }
