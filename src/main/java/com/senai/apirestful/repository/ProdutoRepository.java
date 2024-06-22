@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 
 import java.lang.reflect.Array;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,19 @@ public class ProdutoRepository {
             produtos.removeIf(produto -> produto.getId() == id);
             return "Produto com id: " + id + " Excluido com sucesso!";
         }
+    }
+
+    public Produto atualizar(Produto produto) {
+        Optional<Produto> produtoEncontrado = obterPorId(produto.getId());
+        if (produtoEncontrado.isEmpty()) {
+            throw new InputMismatchException("Produto não encontrado");
+        }
+        else {
+            deletar(produto.getId());
+            produtos.add(produto);
+        }
+
+        return produto;
     }
 
 }

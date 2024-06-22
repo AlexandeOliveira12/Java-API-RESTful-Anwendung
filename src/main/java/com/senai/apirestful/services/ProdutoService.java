@@ -32,4 +32,9 @@ public class ProdutoService {
     public String deletar(Long id) {
         return produtoRepository.deletar(id);
     }
+
+    public Produto atualizar(Long id, Produto produto) {
+        produto.setId(id);
+        return produtoRepository.atualizar(produto);
+    }
 }

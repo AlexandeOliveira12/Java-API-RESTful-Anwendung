@@ -35,4 +35,9 @@ public class ProdutoController {
     public String deletar(@PathVariable Long id) {
         return produtoService.deletar(id);
     }
+
+    @PutMapping("/{id}")
+    public Produto atualizar(@RequestBody Produto produto, @PathVariable Long id){
+        return produtoService.atualizar(id, produto);
+    }
 }
