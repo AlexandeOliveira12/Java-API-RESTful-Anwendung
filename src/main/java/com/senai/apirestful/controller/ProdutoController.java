@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/produtos")
@@ -18,6 +19,11 @@ public class ProdutoController {
     @GetMapping
     public List<Produto> obterTodos() {
         return produtoService.obterTodos();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Produto> obterPorID(@PathVariable Long id) {
+        return produtoService.obterPorId(id);
     }
 
     @PostMapping
